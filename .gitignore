@@ -1,3 +1,6 @@
 *.o
 a.out
 a_few_functions
+
+ex00/a_few_functions
+ex01/iter
