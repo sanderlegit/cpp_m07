@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/28 12:04:31 by averheij      #+#    #+#                 */
-/*   Updated: 2021/01/28 14:22:09 by averheij      ########   odam.nl         */
+/*   Updated: 2021/01/28 14:29:40 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,20 @@
 #define NUMMAX	57
 #define NUMMIN	48
 
+char			rand_char(void) {
+	switch (rand() % 3) {
+		case 0: return((rand() % (ALPHAUPPERMAX - ALPHAUPPERMIN)) + ALPHAUPPERMIN);
+		case 1: return((rand() % (ALPHALOWERMAX - ALPHALOWERMIN)) + ALPHALOWERMIN);
+		case 2: return((rand() % (NUMMAX - NUMMIN)) + NUMMIN);
+	}
+	return 0;
+}
+
 std::string		*rand_string(int length) {
 	std::string		*str = new std::string();
 
-	for (int i = 0; i < length; i++) {
-		switch (rand() % 3) {
-			case 0: str->push_back((rand() % (ALPHAUPPERMAX - ALPHAUPPERMIN)) + ALPHAUPPERMIN);
-					break;
-			case 1: str->push_back((rand() % (ALPHALOWERMAX - ALPHALOWERMIN)) + ALPHALOWERMIN);
-					break;
-			case 2: str->push_back((rand() % (NUMMAX - NUMMIN)) + NUMMIN);
-					break;
-		}
-	}
+	for (int i = 0; i < length; i++)
+		str->push_back(rand_char());
 	return str;
 }
 
@@ -46,30 +47,34 @@ int		do_tests(void) {
 	float		f[TESTS];
 	std::string	*s[TESTS];
 
-	std::cout << std::endl << "\t\tINTS" << std::endl;
+	std::cout << std::endl << "INTS" << std::endl;
 	for (int i = 0; i < TESTS; i++) {
 		n[i] = rand() % 100;
 	}
 	iter(n, TESTS, print<int>);
 
-	std::cout << std::endl << "\t\tCHARS" << std::endl;
+	std::cout << std::endl << "CHARS" << std::endl;
 	for (int i = 0; i < TESTS; i++) {
-		c[i] = rand() % 20 + 90;
+		c[i] = rand_char();
 	}
 	iter(c, TESTS, print<char>);
 
-	std::cout << std::endl << "\t\tFLOATS" << std::endl;
+	std::cout << std::endl << "FLOATS" << std::endl;
 	for (int i = 0; i < TESTS; i++) {
 		f[i] = static_cast<float>(rand() % 1000) / 100.0f;
 	}
 	iter(f, TESTS, &print<float>);
 
-	std::cout << std::endl << "\t\tSTRINGS" << std::endl;
+	std::cout << std::endl << "STRINGS" << std::endl;
 	for (int i = 0; i < TESTS; i++) {
 		s[i] = rand_string(8);
 	}
 	iter(s, TESTS, print<std::string *>);
 	std::cout << std::endl;
+
+	for (int i = 0; i < TESTS; i++) {
+		delete s[i];
+	}
 
 	return (0);
 }
