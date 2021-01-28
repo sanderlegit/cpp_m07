@@ -6,7 +6,7 @@
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/28 12:04:34 by averheij      #+#    #+#                 */
-/*   Updated: 2021/01/28 12:50:50 by averheij      ########   odam.nl         */
+/*   Updated: 2021/01/28 13:28:00 by averheij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 #include <iostream>
 
 template<typename T>
-void		swap(T *a, T *b) {
+void		swap(T &a, T &b) {
 	T	swp;
 
-	swp = *a;
-	*a = *b;
-	*b = swp;
+	swp = a;
+	a = b;
+	b = swp;
 	return;
 }
 
@@ -48,7 +48,7 @@ int			test_swap(T a, T b) {
 	dupa = a;
 	dupb = b;
 	//std::cout << "swap:\t\ta: " << a << "\tb: " << b << std::endl;
-	swap(&a, &b);
+	swap(a, b);
 	//std::cout << "\t\ta: " << a << "\tb: " << b << std::endl;
 	std::cout << "swap:\ta: " << a << "\t\tb: " << b << std::endl;
 	if (dupa == b && dupb == a)
