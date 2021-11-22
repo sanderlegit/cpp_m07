@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Array.hpp                                          :+:    :+:            */
+/*   Array.hpp                                         e8'   8   '8e          */
 /*                                                     +:+                    */
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/28 15:54:19 by averheij      #+#    #+#                 */
-/*   Updated: 2021/01/28 17:43:59 by averheij      ########   odam.nl         */
+/*   Updated: 2021/11/22 16:38:11 by dries               **ee8ee**            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Array {
 			return;
 		}
 
-		Array<T>(Array<T> const &src) {
+		Array<T>(Array<T> const &src) : _arr(NULL), _len(0) {
 			*this = src;
 			return;
 		}
@@ -52,7 +52,8 @@ class Array {
 		}
 
 		Array<T>		&operator=(Array<T> const &rhs) {
-			delete[] _arr;
+			if (_arr)
+				delete[] _arr;
 			_len = rhs._len;
 			_arr = new T[_len];
 			for (unsigned int i = 0; i < _len; i++) {

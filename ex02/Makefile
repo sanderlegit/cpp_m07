@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
+#    Makefile                                          e8'   8   '8e           #
 #                                                      +:+                     #
 #    By: averheij <averheij@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/01/11 15:02:04 by averheij      #+#    #+#                  #
-#    Updated: 2021/01/28 16:58:32 by averheij      ########   odam.nl          #
+#    Updated: 2021/11/22 16:36:25 by dries               **ee8ee**             #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,9 @@ else
 	CC		=	clang++
 endif
 FLAGS		=	-Wall -Werror -Wextra -std=c++98 -pedantic -g
+ifeq ($(DEBUG), 1)
+	FLAGS	+= -fsanitize=address
+endif
 #FLAGS =
 
 all: $(NAME)
