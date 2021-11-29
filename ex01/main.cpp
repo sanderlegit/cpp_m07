@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.cpp                                           :+:    :+:            */
+/*   main.cpp                                          e8'   8   '8e          */
 /*                                                     +:+                    */
 /*   By: averheij <averheij@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/28 12:04:31 by averheij      #+#    #+#                 */
-/*   Updated: 2021/01/28 14:29:40 by averheij      ########   odam.nl         */
+/*   Updated: 2021/11/29 13:57:49 by dries               **ee8ee**            */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,25 @@ int		do_tests(void) {
 	for (int i = 0; i < TESTS; i++) {
 		n[i] = rand() % 100;
 	}
-	iter(n, TESTS, print<int>);
+	iter(n, TESTS, print);
 
 	std::cout << std::endl << "CHARS" << std::endl;
 	for (int i = 0; i < TESTS; i++) {
 		c[i] = rand_char();
 	}
-	iter(c, TESTS, print<char>);
+	iter(c, TESTS, print);
 
 	std::cout << std::endl << "FLOATS" << std::endl;
 	for (int i = 0; i < TESTS; i++) {
 		f[i] = static_cast<float>(rand() % 1000) / 100.0f;
 	}
-	iter(f, TESTS, &print<float>);
+	iter(f, TESTS, print);
 
 	std::cout << std::endl << "STRINGS" << std::endl;
 	for (int i = 0; i < TESTS; i++) {
 		s[i] = rand_string(8);
 	}
-	iter(s, TESTS, print<std::string *>);
+	iter(s, TESTS, print);
 	std::cout << std::endl;
 
 	for (int i = 0; i < TESTS; i++) {
